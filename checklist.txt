@@ -1,0 +1,17 @@
+.click CHECK
+.hide CHECK
+.show CHECK
+.toggle CHECK
+.slideDown CHECK
+.slideUp CHECK
+.slideToggle CHECK
+.fadeIn CHECK
+.fadeOut CHECK
+.addClass CHECK
+.before CHECK
+.after CHECK
+.append CHECK
+.html
+.attr
+.val CHECK
+.text CHECK

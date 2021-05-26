@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Star Ascension</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#first").hide();
+            $("#More").hide();
+            $(".content").hide();
+            $("#HomeNav").hide();
+            $("#Home").show();
+            $(".nav").click(function(){
+                $(".nav").show();
+                $(this).hide();
+                $(".content").slideUp()
+            });
+            $("#HomeNav").click(function(){
+                $("#Home").slideDown();
+            });
+            $("#BasicsNav").click(function(){
+                $("#Basics").slideDown();
+            });
+            $("#RPGNav").click(function(){
+                $("#RPG").slideDown();
+            });
+            $("#KSNav").click(function(){
+                $("#Kickstarter").slideDown();
+            });
+            $("#BlogNav").click(function(){
+                $("#Blog").slideDown();
+            });
+            var edited = false;
+            $("#post").click(function(){
+                $(".entry").before("<span>Older: </span>");
+                $(".entry").addClass("old");
+                var comment = "<p>" + $("#comments").val() + "</p>";
+                $("#comments").val("");
+                $("#guestbook").append(comment);
+                $("#guestbook p").addClass("entry");
+                $(".old").removeClass("entry");
+                if(edited == false){
+                    $("button").after("<span> Edited</span>");
+                    edited = true;
+                };
+                var classname = $(".entry").attr("class");
+                console.log("element class: " + classname);
+                var hyperText = $("#guestbook").html();
+                console.log("HTML of the guestbook: " + hyperText);
+                
+
+
+            });
+            $("#MenuToggle").click(function(){
+                $("ul").toggle(200);
+                if($("#MenuToggle").text() == "Hide Menu"){
+                    $("#MenuToggle").text("Show Menu");
+                }
+                else{
+                    $("#MenuToggle").text("Hide Menu");
+                }
+            })
+            $("#MoreLink").click(function(){
+                $("#More").slideToggle();
+            });
+            $(".photo").click(function(){
+                $(".photo").fadeIn();
+                $(this).fadeOut();
+            })
+            $("#night").click(function(){
+                if($("#night").text() == "Night Mode"){
+                    $("#wrapper").addClass("night");
+                    $("header").addClass("night");
+                    $(".content").addClass("night");
+                    $("#night").text("Day Mode");
+                }
+                else{
+                    $("#wrapper").removeClass("night");
+                    $("header").removeClass("night");
+                    $(".content").removeClass("night");
+                    $("#night").text("Night Mode");
+                }
+                
+            });
+
+
+        });
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="#" id="MenuToggle">Hide Menu</a>
+            <ul>
+                <li><a href="#" class="nav" id="HomeNav">Home</a></li>
+                <li><a href="#" class="nav" id="BasicsNav">Star Ascension Basics</a></li>
+                <li><a href="#" class="nav" id="RPGNav">What is a Role Playing Game?</a></li>
+                <li><a href="#" class="nav" id="KSNav">Kickstarter</a></li>
+                <li><a href="#" class="nav" id="BlogNav">Blog</a></li>
+            </ul>
+            <a href="#" id="night">Night Mode</a>
+            
+        </header>
+        <div id="main">
+            <div class="content" id="Home">
+                <h2>Star Ascension</h2>
+                <p>The Star Ascension Project produced the first, reliable faster-than-light (FTL) drive starting the largest exploration age in human history. Explore worlds of lawless lands, high technology, alien hazards and much more!</p>
+                <img src="map.png" alt="map">
+            </div>
+            <div class="content" id="Basics">
+                <h2>Star Ascension Basics</h2>
+                <p>Star Ascension uses the Open D6 System in which players roll a dice pool of 6-sided dice based on their character's skill level. Most rolls need to beat a difficulty number or another player's roll to succeed in the action.</p>
+                <img src="6sided_dice.jpg" alt="dice">
+                <a href="#" id="MoreLink">Example...</a>
+                <p id="More">Hand to Hand is the Skill used for fighting unarmed in a fist fight. If a Character has 2D in Hand to Hand, the Player rolls two six-sided dice. The Character they're fighting against rolls dice based on their respective Hand to Hand Skill score. The outcome depends on who rolls higher based on the rules in the rule book.</p>
+            </div>
+            <div class="content" id="RPG">
+                <h2>What is a Role Playing Game?</h2>
+                <p>A Role Playing Game is a different type of game from some of the traditional board games you may have played. Much like other board games, there are dice, rules for playing and sometimes even playing pieces to represent your character. Unlike most board games, you're playing a character you invent. As you play, you make decisions for your character as if it were a real life situations. In most role playing games, play is cooperative and you succeed or fail as a group. A special player in the group known as the Gamemaster does not play a character, but rather runs the game, describes each scene to the players and will represent the other people and challenges they will face.</p>
+                <img src="minis.png" alt="minis">
+            </div>
+            <div class="content" id="Kickstarter">
+                <h2>Kickstarter</h2>
+                <p>To pay for art and publishing, we ran a Kicstarter campaign which was successfully funded!</p>
+                <img src="kickstarter.jpg" alt="kickstarter">
+                <a href="https://www.kickstarter.com/projects/radiantgamingsystems/star-ascension-a-gritty-sci-fi-rpg-for-open-d6" target="_blank">View the campaign here.</a>
+            </div>
+            <div class="content" id="Blog">
+                <h2>Blog</h2>
+                <div id="guestbook">
+
+                </div>
+                <form>
+                    <label for="comments">Message:</label>
+                    <textarea id="comments"></textarea>
+                </form>
+                <button id="post">Post Comment</button>
+                <form>
+                    <label for="subscribe">Subscribe:</label>
+                    <input type="checkbox" id="subscribe">
+                </form>
+                <div id="subscribed">
+
+                </div>
+            </div>
+
+        </div>
+        <div id="content2">
+            <img src="SABook.png" alt="cover" class="photo">
+            <img src="pirates.png" alt="pirates" id="first" class="photo">
+        </div>
+    </div>
+
+</body>
+
+</html>
